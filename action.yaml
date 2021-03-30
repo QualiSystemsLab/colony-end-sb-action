@@ -1,0 +1,22 @@
+name: 'End Colony Sandbox'
+description: 'Ends a sandbox in Colony'
+author: 'Quali'
+inputs:
+  space:
+    description: 'Colony space'
+    required: true
+  sandbox_id:
+    description: 'Colony Sandbox ID'
+    required: true
+  colony_token:
+    description: 'Colony longterm token'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - id: end-sandbox
+      run: |
+        curl --silent -X DELETE "https://cloudshellcolony.com/api/spaces/${{ inputs.space }}/sandbox/${{ inputs.sandbox_id }}" \
+        -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}" || exit 1
+      shell: bash
