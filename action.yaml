@@ -17,6 +17,7 @@ runs:
   steps:
     - id: end-sandbox
       run: |
-        curl --silent -X DELETE "https://cloudshellcolony.com/api/spaces/${{ inputs.space }}/sandbox/${{ inputs.sandbox_id }}" \
-        -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}" || exit 1
+        sandbox=${{ inputs.sandbox-id }}
+        echo "::debug::Ending sandbox $(echo "$sandbox")"
+        python3 ${{ github.action_path }}/stop.py "$sandbox" "$timeout"
       shell: bash
