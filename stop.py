@@ -23,6 +23,7 @@ if __name__ == "__main__":
 
     try:
         client.end_sandbox(sandbox_id)
+        print(f"\u001b[32;1mEnd request has been sent\u001b[0m")
     except Exception as e:
         print(f"::error::Unable to stop Sandbox {sandbox_id}; reason: {e}")
         sys.exit(1)
