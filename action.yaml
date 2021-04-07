@@ -18,6 +18,6 @@ runs:
     - id: end-sandbox
       run: |
         sandbox=${{ inputs.sandbox_id }}
-        echo "::debug::Ending sandbox $(echo "$sandbox")"
-        python3 ${{ github.action_path }}/stop.py "$sandbox" "$timeout"
+        echo "::debug::Ending sandbox $(echo $sandbox)"
+        python3 ${{ github.action_path }}/stop.py "$sandbox"
       shell: bash

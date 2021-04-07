@@ -18,11 +18,11 @@ if __name__ == "__main__":
     sandbox_id = args.sandbox_id
 
     if not sandbox_id:
-        sys.stderr.write("Sandbox Id cannot be empty")
+        print("::error::Sandbox Id cannot be empty")
         sys.exit(1)
 
     try:
         client.end_sandbox(sandbox_id)
     except Exception as e:
-        sys.stderr.write(f"Unable to stop Sandbox {sandbox_id}; reason: {e}")
+        print(f"::error::Unable to stop Sandbox {sandbox_id}; reason: {e}")
         sys.exit(1)
