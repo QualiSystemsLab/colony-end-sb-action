@@ -21,3 +21,6 @@ runs:
         echo "::debug::Ending sandbox $(echo $sandbox)"
         python3 ${{ github.action_path }}/stop.py "$sandbox"
       shell: bash
+      env:
+        COLONY_SPACE: ${{ inputs.space }}
+        COLONY_TOKEN: ${{ inputs.colony_token }}
