@@ -1,7 +1,7 @@
 import os
 import sys
 import argparse
-from colony_client import ColonyClient, LoggerService
+from common import ColonyClient, LoggerService
 
 def parse_user_input():
     parser = argparse.ArgumentParser(prog='Colony Sandbox Start')
