@@ -1,7 +1,7 @@
 import os
 import sys
 import argparse
-from colony_client import ColonyClient
+from colony_client import ColonyClient, LoggerService
 
 def parse_user_input():
     parser = argparse.ArgumentParser(prog='Colony Sandbox Start')
@@ -18,12 +18,10 @@ if __name__ == "__main__":
     sandbox_id = args.sandbox_id
 
     if not sandbox_id:
-        print("::error::Sandbox Id cannot be empty")
-        sys.exit(1)
+        LoggerService.error("Sandbox Id cannot be empty.")
 
     try:
         client.end_sandbox(sandbox_id)
-        print(f"\u001b[32;1mEnd request has been sent\u001b[0m")
+        LoggerService.success(f"End request has been sent.")
     except Exception as e:
-        print(f"::error::Unable to stop Sandbox {sandbox_id}; reason: {e}")
-        sys.exit(1)
+        LoggerService.error(f"Unable to stop Sandbox {sandbox_id}; reason: {e}")
