@@ -1,15 +1,15 @@
 name: 'End Colony Sandbox'
-description: 'Ends a sandbox in Colony'
+description: 'Ends a CloudShell Colony sandbox'
 author: 'Quali'
 inputs:
   space:
-    description: 'Colony space'
+    description: 'The Colony space the sandbox is running in'
     required: true
   sandbox_id:
-    description: 'Colony Sandbox ID'
+    description: 'The Colony Sandbox ID to end'
     required: true
   colony_token:
-    description: 'Colony longterm token'
+    description: 'A Colony longterm token'
     required: true
 
 runs:
