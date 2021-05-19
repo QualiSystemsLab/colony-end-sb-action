@@ -10,18 +10,17 @@ A github action which is used in a combination with [colony-start-sb-action](htt
     # The name of the Colony Space your repository is connected to
     space: TestSpace
 
-    # Provide the long term Colony token which could be generated
-    # on the 'Integrations' page under the Colony's Settings page
-    # or generate a new one with the REST API
+    # Provide the long term Colony token. You can generate it in Colony > Settings > Integrations
+    # or via the REST API.
     colony_token: ${{ secrets.COLONY_TOKEN }}
 
-    # Provide an ID of Sandbox you want to end
+    # Provide the ID of the sandbox you want to end
     sandbox_id: ${{ steps.start-sb.outputs.sandbox_id }}
 ```
 
 ## Examples
 
-The following example demonstrates how this action could be used in combination with [colony-start-sb-action](https://github.com/QualiSystemsLab/colony-start-sb-action) to run tests against some flask web application deployed inside Colony Sandbox
+The following example demonstrates how to use this action in combination with [colony-start-sb-action](https://github.com/QualiSystemsLab/colony-start-sb-action) to run tests against some flask web application deployed inside a Colony sandbox:
 
 ```yaml
 name: CI
