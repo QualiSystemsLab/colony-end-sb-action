@@ -1,5 +1,5 @@
 name: 'End Torque Sandbox'
-description: 'Ends a CloudShell Torque sandbox'
+description: 'Ends a Torque sandbox'
 author: 'Quali'
 inputs:
   space:

@@ -1,6 +1,6 @@
 # torque-end-sb-action
 
-A github action which is used in a combination with [torque-start-sb-action](https://github.com/QualiTorque/torque-start-sb-action) and helps to integrate CloudShell Torque into your CI/CD pipeline
+A github action which is used in a combination with [torque-start-sb-action](https://github.com/QualiTorque/torque-start-sb-action) and helps to integrate Torque into your CI/CD pipeline
 
 ## Usage
 
