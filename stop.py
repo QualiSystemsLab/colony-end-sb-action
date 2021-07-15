@@ -1,19 +1,19 @@
 import os
 import sys
 import argparse
-from common import ColonyClient, LoggerService
+from common import TorqueClient, LoggerService
 
 def parse_user_input():
-    parser = argparse.ArgumentParser(prog='Colony Sandbox Start')
+    parser = argparse.ArgumentParser(prog='Torque Sandbox Start')
     parser.add_argument("sandbox_id", type=str, help="The name of sandbox")
     return parser.parse_args()
 
 if __name__ == "__main__":
     args = parse_user_input()
 
-    client = ColonyClient(
-        space=os.environ.get("COLONY_SPACE", ""),
-        token=os.environ.get("COLONY_TOKEN", "")
+    client = TorqueClient(
+        space=os.environ.get("TORQUE_SPACE", ""),
+        token=os.environ.get("TORQUE_TOKEN", "")
     )
     sandbox_id = args.sandbox_id
 

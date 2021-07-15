@@ -1,18 +1,18 @@
-# colony-end-sb-action
+# torque-end-sb-action
 
-A github action which is used in a combination with [colony-start-sb-action](https://github.com/QualiSystemsLab/colony-start-sb-action) and helps to integrate CloudShell Colony into your CI/CD pipeline
+A github action which is used in a combination with [torque-start-sb-action](https://github.com/QualiTorque/torque-start-sb-action) and helps to integrate CloudShell Torque into your CI/CD pipeline
 
 ## Usage
 
 ```yaml
-- uses: QualiSystemsLab/colony-end-sb-action@v0.0.1
+- uses: QualiTorque/torque-end-sb-action@v0.0.1
   with:
-    # The name of the Colony Space your repository is connected to
+    # The name of the Torque Space your repository is connected to
     space: TestSpace
 
-    # Provide the long term Colony token. You can generate it in Colony > Settings > Integrations
+    # Provide the long term Torque token. You can generate it in Torque > Settings > Integrations
     # or via the REST API.
-    colony_token: ${{ secrets.COLONY_TOKEN }}
+    torque_token: ${{ secrets.TORQUE_TOKEN }}
 
     # Provide the ID of the sandbox you want to end
     sandbox_id: ${{ steps.start-sb.outputs.sandbox_id }}
@@ -20,7 +20,7 @@ A github action which is used in a combination with [colony-start-sb-action](htt
 
 ## Examples
 
-The following example demonstrates how to use this action in combination with [colony-start-sb-action](https://github.com/QualiSystemsLab/colony-start-sb-action) to run tests against some flask web application deployed inside a Colony sandbox:
+The following example demonstrates how to use this action in combination with [torque-start-sb-action](https://github.com/QualiTorque/torque-start-sb-action) to run tests against some flask web application deployed inside a Torque sandbox:
 
 ```yaml
 name: CI
@@ -47,18 +47,18 @@ jobs:
         aws-region: us-east-1
         run: aws s3 copy ./workspace/flaskapp.latest.tar.gz s3://myartifacts/latest
         
-  test-with-colony:
+  test-with-torque:
     needs: build-and-publish
     runs-on: ubuntu-latest
     
     steps:
-    - name: Start Colony Sandbox
+    - name: Start Torque Sandbox
       id: start-sandbox
-      uses: QualiSystemsLab/colony-start-sb-action@v0.0.1
+      uses: QualiTorque/torque-start-sb-action@v0.0.1
       with:
         space: Demo
         blueprint_name: WebApp
-        colony_token: ${{ secrets.COLONY_TOKEN }}
+        torque_token: ${{ secrets.TORQUE_TOKEN }}
         duration: 120
         timeout: 30
         artifacts: 'flask-app=latest/flaskapp.lates.tar.gz'
@@ -75,9 +75,9 @@ jobs:
         done
 
     - name: Stop sandbox
-      uses: QualiSystemsLab/colony-end-sb-action@v0.0.1
+      uses: QualiTorque/torque-end-sb-action@v0.0.1
       with:
         space: Demo
         sandbox_id: ${{ steps.start-sandbox.outputs.sandbox_id }}
-        colony_token: ${{ secrets.COLONY_TOKEN }} 
+        torque_token: ${{ secrets.TORQUE_TOKEN }} 
 ```

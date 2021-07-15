@@ -1,15 +1,15 @@
-name: 'End Colony Sandbox'
-description: 'Ends a CloudShell Colony sandbox'
+name: 'End Torque Sandbox'
+description: 'Ends a CloudShell Torque sandbox'
 author: 'Quali'
 inputs:
   space:
-    description: 'The Colony space the sandbox is running in'
+    description: 'The Torque space the sandbox is running in'
     required: true
   sandbox_id:
-    description: 'The Colony Sandbox ID to end'
+    description: 'The Torque Sandbox ID to end'
     required: true
-  colony_token:
-    description: 'A Colony longterm token'
+  torque_token:
+    description: 'A Torque longterm token'
     required: true
 
 runs:
@@ -22,8 +22,8 @@ runs:
         python3 ${{ github.action_path }}/stop.py "$sandbox"
       shell: bash
       env:
-        COLONY_SPACE: ${{ inputs.space }}
-        COLONY_TOKEN: ${{ inputs.colony_token }}
+        TORQUE_SPACE: ${{ inputs.space }}
+        TORQUE_TOKEN: ${{ inputs.torque_token }}
     
 branding:
   icon: 'stop-circle'  
