@@ -5,7 +5,7 @@ A github action which is used in a combination with [torque-start-sb-action](htt
 ## Usage
 
 ```yaml
-- uses: QualiTorque/torque-end-sb-action@v0.0.1
+- uses: QualiTorque/torque-end-sb-action@v0.0.3
   with:
     # The name of the Torque Space your repository is connected to
     space: TestSpace
@@ -54,7 +54,7 @@ jobs:
     steps:
     - name: Start Torque Sandbox
       id: start-sandbox
-      uses: QualiTorque/torque-start-sb-action@v0.0.1
+      uses: QualiTorque/torque-start-sb-action@v0.0.3
       with:
         space: Demo
         blueprint_name: WebApp
@@ -75,7 +75,7 @@ jobs:
         done
 
     - name: Stop sandbox
-      uses: QualiTorque/torque-end-sb-action@v0.0.1
+      uses: QualiTorque/torque-end-sb-action@v0.0.3
       with:
         space: Demo
         sandbox_id: ${{ steps.start-sandbox.outputs.sandbox_id }}
