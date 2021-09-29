@@ -67,9 +67,9 @@ jobs:
     - name: Testing
       id: test-app
       run: |
-        echo "Running tests against sandbox with id: ${{ steps.start-sandbox.outputs.sandbox_id }}
-        shortcuts=${{ steps.start-sandbox.sandbox_shortcuts }}
-        readarray -t shortcuts <<< "$(jq '. | .flask-app[]' <<< '${{ steps.start-sandbox.sandbox_shortcuts }}')"
+        echo "Running tests against sandbox with id: ${{ steps.start-sandbox.outputs.sandbox_id }}"
+        shortcuts=${{ steps.start-sandbox.outputs.sandbox_shortcuts }}
+        readarray -t shortcuts <<< "$(jq '. | .flask-app[]' <<< '${{ steps.start-sandbox.outputs.sandbox_shortcuts }}')"
         for shortcut in ${shortcuts[@]}; do
             "Do something with this ${shortcut}."
         done
