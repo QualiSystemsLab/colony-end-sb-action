@@ -5,7 +5,7 @@ A github action which is used in a combination with [torque-start-sb-action](htt
 ## Usage
 
 ```yaml
-- uses: QualiTorque/torque-end-sb-action@v0.0.3
+- uses: QualiTorque/torque-end-sb-action@v0.1
   with:
     # The name of the Torque Space your repository is connected to
     space: TestSpace
@@ -54,7 +54,7 @@ jobs:
     steps:
     - name: Start Torque Sandbox
       id: start-sandbox
-      uses: QualiTorque/torque-start-sb-action@v0.0.3
+      uses: QualiTorque/torque-start-sb-action@v0.1
       with:
         space: Demo
         blueprint_name: WebApp
@@ -68,14 +68,10 @@ jobs:
       id: test-app
       run: |
         echo "Running tests against sandbox with id: ${{ steps.start-sandbox.outputs.sandbox_id }}"
-        shortcuts=${{ steps.start-sandbox.outputs.sandbox_shortcuts }}
-        readarray -t shortcuts <<< "$(jq '. | .flask-app[]' <<< '${{ steps.start-sandbox.outputs.sandbox_shortcuts }}')"
-        for shortcut in ${shortcuts[@]}; do
-            "Do something with this ${shortcut}."
-        done
+        echo "Do something with sandbox details json: ${{ steps.start-sandbox.outputs.sandbox_details }}"
 
     - name: Stop sandbox
-      uses: QualiTorque/torque-end-sb-action@v0.0.3
+      uses: QualiTorque/torque-end-sb-action@v0.1
       with:
         space: Demo
         sandbox_id: ${{ steps.start-sandbox.outputs.sandbox_id }}
