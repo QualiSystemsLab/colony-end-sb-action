@@ -5,7 +5,7 @@ A github action which is used in a combination with [torque-start-sb-action](htt
 ## Usage
 
 ```yaml
-- uses: QualiTorque/torque-end-sb-action@v0.1
+- uses: QualiTorque/torque-end-sb-action@v0.1.0
   with:
     # The name of the Torque Space your repository is connected to
     space: TestSpace
