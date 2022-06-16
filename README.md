@@ -16,6 +16,10 @@ A github action which is used in a combination with [torque-start-sb-action](htt
 
     # Provide the ID of the sandbox you want to end
     sandbox_id: ${{ steps.start-sb.outputs.sandbox_id }}
+
+    # [Optional] Provide the url string. In rare cases you migth want to override the main
+    # Torque server address 'https://portal.qtorque.io'. 
+    torque_url: "https://portal.qtorque.io"
 ```
 
 ## Examples

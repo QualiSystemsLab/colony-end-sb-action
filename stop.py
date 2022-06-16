@@ -1,19 +1,21 @@
 import os
-import sys
 import argparse
 from common import TorqueClient, LoggerService
 
+
 def parse_user_input():
-    parser = argparse.ArgumentParser(prog='Torque Sandbox Start')
+    parser = argparse.ArgumentParser(prog="Torque Sandbox Start")
     parser.add_argument("sandbox_id", type=str, help="The name of sandbox")
     return parser.parse_args()
+
 
 if __name__ == "__main__":
     args = parse_user_input()
 
     client = TorqueClient(
         space=os.environ.get("TORQUE_SPACE", ""),
-        token=os.environ.get("TORQUE_TOKEN", "")
+        token=os.environ.get("TORQUE_TOKEN", ""),
+        torque_url=os.environ.get("TORQUE_URL", None),
     )
     sandbox_id = args.sandbox_id
 
