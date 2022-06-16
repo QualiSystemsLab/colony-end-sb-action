@@ -11,7 +11,11 @@ inputs:
   torque_token:
     description: 'A Torque longterm token'
     required: true
-
+  torque_url:
+    description: 'Alternative Torque server url'
+    required: false
+    default: https://portal.qtorque.io
+    
 runs:
   using: "composite"
   steps:
@@ -24,6 +28,7 @@ runs:
       env:
         TORQUE_SPACE: ${{ inputs.space }}
         TORQUE_TOKEN: ${{ inputs.torque_token }}
+        TORQUE_URL: ${{ inputs.torque_url }}
     
 branding:
   icon: 'stop-circle'  
