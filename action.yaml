@@ -18,8 +18,10 @@ inputs:
     
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "ddovbii/torque-cli"
   args:
+    - sb
+    - end
     - ${{ inputs.sandbox_id }}
 
   env:
