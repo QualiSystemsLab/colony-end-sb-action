@@ -18,7 +18,7 @@ inputs:
     
 runs:
   using: "docker"
-  image: "ddovbii/torque-cli"
+  image: "docker://ddovbii/torque-cli"
   args:
     - sb
     - end
