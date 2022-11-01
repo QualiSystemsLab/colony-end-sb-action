@@ -11,25 +11,22 @@ inputs:
   torque_token:
     description: 'A Torque longterm token'
     required: true
-  torque_url:
+  torque_hostname:
     description: 'Alternative Torque server url'
     required: false
-    default: https://portal.qtorque.io
+    default: portal.qtorque.io
     
 runs:
-  using: "composite"
-  steps:
-    - id: end-sandbox
-      run: |
-        sandbox=${{ inputs.sandbox_id }}
-        echo "::debug::Ending sandbox $(echo $sandbox)"
-        python3 ${{ github.action_path }}/stop.py "$sandbox"
-      shell: bash
-      env:
-        TORQUE_SPACE: ${{ inputs.space }}
-        TORQUE_TOKEN: ${{ inputs.torque_token }}
-        TORQUE_URL: ${{ inputs.torque_url }}
-    
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.sandbox_id }}
+
+  env:
+    TORQUE_TOKEN: ${{ inputs.torque_token }}
+    TORQUE_SPACE: ${{ inputs.space }}
+    TORQUE_HOSTNAME: ${{ inputs.torque_hostname }}
+
 branding:
   icon: 'stop-circle'  
   color: 'red'
