@@ -1,11 +1,11 @@
-# torque-end-sb-action
+# torque-end-env-action
 
-A github action which is used in a combination with [torque-start-sb-action](https://github.com/QualiTorque/torque-start-sb-action) and helps to integrate Torque into your CI/CD pipeline
+A github action which is used in a combination with [torque-start-env-action](https://github.com/QualiTorque/torque-start-env-action) and helps to integrate Torque into your CI/CD pipeline
 
 ## Usage
 
 ```yaml
-- uses: QualiTorque/torque-end-sb-action@v0.1.0
+- uses: QualiTorque/torque-end-env-action@v0.1.0
   with:
     # The name of the Torque Space your repository is connected to
     space: TestSpace
@@ -14,8 +14,8 @@ A github action which is used in a combination with [torque-start-sb-action](htt
     # or via the REST API.
     torque_token: ${{ secrets.TORQUE_TOKEN }}
 
-    # Provide the ID of the sandbox you want to end
-    sandbox_id: ${{ steps.start-sb.outputs.sandbox_id }}
+    # Provide the ID of the environment you want to end
+    environment_id: ${{ steps.start-env.outputs.environment_id }}
 
     # [Optional] Provide the url string. In rare cases you migth want to override the main
     # Torque server address 'https://portal.qtorque.io'. 
@@ -24,7 +24,7 @@ A github action which is used in a combination with [torque-start-sb-action](htt
 
 ## Examples
 
-The following example demonstrates how to use this action in combination with [torque-start-sb-action](https://github.com/QualiTorque/torque-start-sb-action) to run tests against some flask web application deployed inside a Torque sandbox:
+The following example demonstrates how to use this action in combination with [torque-start-env-action](https://github.com/QualiTorque/torque-start-env-action) to run tests against some flask web application deployed inside a Torque environment:
 
 ```yaml
 name: CI
@@ -56,9 +56,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Start Torque Sandbox
-      id: start-sandbox
-      uses: QualiTorque/torque-start-sb-action@v0.1.1
+    - name: Start Torque Environment
+      id: start-environment
+      uses: QualiTorque/torque-start-env-action@v0.1.1
       with:
         space: Demo
         blueprint_name: WebApp
@@ -71,13 +71,13 @@ jobs:
     - name: Testing
       id: test-app
       run: |
-        echo "Running tests against sandbox with id: ${{ steps.start-sandbox.outputs.sandbox_id }}"
-        echo "Do something with sandbox details json: ${{ steps.start-sandbox.outputs.sandbox_details }}"
+        echo "Running tests against environment with id: ${{ steps.start-environment.outputs.environment_id }}"
+        echo "Do something with environment details json: ${{ steps.start-environment.outputs.environment_details }}"
 
-    - name: Stop sandbox
-      uses: QualiTorque/torque-end-sb-action@v0.1.0
+    - name: Stop environment
+      uses: QualiTorque/torque-end-env-action@v0.1.0
       with:
         space: Demo
-        sandbox_id: ${{ steps.start-sandbox.outputs.sandbox_id }}
+        environment_id: ${{ steps.start-environment.outputs.environment_id }}
         torque_token: ${{ secrets.TORQUE_TOKEN }} 
 ```

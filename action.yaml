@@ -1,12 +1,12 @@
-name: 'End Torque Sandbox'
-description: 'Ends a Torque sandbox'
+name: 'End Torque Environment'
+description: 'Ends a Torque Environment'
 author: 'Quali'
 inputs:
   space:
-    description: 'The Torque space the sandbox is running in'
+    description: 'The Torque space the Environment is running in'
     required: true
-  sandbox_id:
-    description: 'The Torque Sandbox ID to end'
+  environment_id:
+    description: 'The Torque Environment ID to end'
     required: true
   torque_token:
     description: 'A Torque longterm token'
@@ -22,7 +22,7 @@ runs:
   args:
     - sb
     - end
-    - ${{ inputs.sandbox_id }}
+    - ${{ inputs.environment_id }}
 
   env:
     TORQUE_TOKEN: ${{ inputs.torque_token }}
