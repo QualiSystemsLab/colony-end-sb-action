@@ -20,7 +20,7 @@ runs:
   using: "docker"
   image: "docker://qtorque/torque-cli"
   args:
-    - sb
+    - env
     - end
     - ${{ inputs.environment_id }}
 
