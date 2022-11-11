@@ -17,9 +17,9 @@ A github action which is used in a combination with [torque-start-environment](h
     # Provide the ID of the environment you want to end
     environment_id: ${{ steps.start-env.outputs.environment_id }}
 
-    # [Optional] Provide the url string. In rare cases you migth want to override the main
-    # Torque server address 'https://portal.qtorque.io'. 
-    torque_url: "https://portal.qtorque.io"
+    # [Optional] Provide the hostname string. In rare cases you migth want to override the main
+    # Torque server address 'portal.qtorque.io'. 
+    torque_hostname: "example.qtorque.io"
 ```
 
 ## Examples
@@ -37,7 +37,7 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - name: Make artifact
       id: build
       run: |
