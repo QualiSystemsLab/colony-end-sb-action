@@ -5,7 +5,7 @@ A github action which is used in a combination with [torque-start-environment](h
 ## Usage
 
 ```yaml
-- uses: QualiTorque/torque-end-environment@v0.1.0
+- uses: QualiTorque/torque-end-environment@v1
   with:
     # The name of the Torque Space your repository is connected to
     space: TestSpace
@@ -58,7 +58,7 @@ jobs:
     steps:
     - name: Start Torque Environment
       id: start-environment
-      uses: QualiTorque/torque-start-environment@v0.1.1
+      uses: QualiTorque/torque-start-environment@v1
       with:
         space: Demo
         blueprint_name: WebApp
@@ -75,7 +75,7 @@ jobs:
         echo "Do something with environment details json: ${{ steps.start-environment.outputs.environment_details }}"
 
     - name: Stop environment
-      uses: QualiTorque/torque-end-environment@v0.1.0
+      uses: QualiTorque/torque-end-environment@v1
       with:
         space: Demo
         environment_id: ${{ steps.start-environment.outputs.environment_id }}
