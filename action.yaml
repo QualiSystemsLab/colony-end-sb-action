@@ -18,7 +18,7 @@ inputs:
     
 runs:
   using: "docker"
-  image: "docker://qtorque/torque-cli"
+  image: "docker://qtorque/torque-cli:1.7"
   args:
     - env
     - end
@@ -28,6 +28,7 @@ runs:
     TORQUE_TOKEN: ${{ inputs.torque_token }}
     TORQUE_SPACE: ${{ inputs.space }}
     TORQUE_HOSTNAME: ${{ inputs.torque_hostname }}
+    TORQUE_USERAGENT: Torque-Plugin-Github-Env-Environment-Action/v1
 
 branding:
   icon: 'stop-circle'  
