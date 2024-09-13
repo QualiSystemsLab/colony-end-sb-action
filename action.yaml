@@ -18,7 +18,7 @@ inputs:
     
 runs:
   using: "docker"
-  image: "docker://qtorque/torque-cli:1.7"
+  image: "docker://quali/torque-cli:2.5.8"
   args:
     - env
     - end
